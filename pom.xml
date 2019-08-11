@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.chuangdun</groupId>
-  <artifactId>arcface-spring-boot-parent</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>arcface-spring-boot-parent</name>
-  <url>http://www.example.com</url>
+    <groupId>com.chuangdun</groupId>
+    <artifactId>arcface-spring-boot-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>arcface-spring-boot-parent</name>
+    <url>http://www.example.com</url>
 
-  <modules>
-    <module>arcface-engine</module>
-    <module>arcface-spring-boot-autoconfigure</module>
-    <module>arcface-spring-boot-starter</module>
-    <module>arcface-test</module>
-  </modules>
+    <modules>
+        <module>arcface-engine</module>
+        <module>arcface-spring-boot-autoconfigure</module>
+        <module>arcface-spring-boot-starter</module>
+        <module>arcface-test</module>
+    </modules>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
-    <arcsoft-sdk-face.version>2.2.0.1</arcsoft-sdk-face.version>
-    <arcface-engine.version>1.0-SNAPSHOT</arcface-engine.version>
-    <arcface-spring-boot-autoconfigure.version>1.0-SNAPSHOT</arcface-spring-boot-autoconfigure.version>
-    <arcface-spring-boot-starter.version>1.0-SNAPSHOT</arcface-spring-boot-starter.version>
-    <arcface-test>1.0-SNAPSHOT</arcface-test>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+        <arcsoft-sdk-face.version>2.2.0.1</arcsoft-sdk-face.version>
+        <arcface-engine.version>1.0-SNAPSHOT</arcface-engine.version>
+        <arcface-spring-boot-autoconfigure.version>1.0-SNAPSHOT</arcface-spring-boot-autoconfigure.version>
+        <arcface-spring-boot-starter.version>1.0-SNAPSHOT</arcface-spring-boot-starter.version>
+        <arcface-test>1.0-SNAPSHOT</arcface-test>
 
-  </properties>
+    </properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter</artifactId>
-        <version>${spring-boot.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.arcsoft.face</groupId>
-        <artifactId>arcsoft-sdk-face</artifactId>
-        <version>${arcsoft-sdk-face.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-maven-plugin</artifactId>
-          <version>${spring-boot.version}</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.arcsoft.face</groupId>
+                <artifactId>arcsoft-sdk-face</artifactId>
+                <version>${arcsoft-sdk-face.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

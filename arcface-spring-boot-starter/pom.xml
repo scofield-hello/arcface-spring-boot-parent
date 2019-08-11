@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.chuangdun</groupId>
-    <artifactId>arcface-spring-boot-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.chuangdun</groupId>
+        <artifactId>arcface-spring-boot-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-  <artifactId>arcface-spring-boot-starter</artifactId>
-  <packaging>pom</packaging>
-  <name>arcface-spring-boot-starter</name>
-  <url>http://www.example.com</url>
+    <artifactId>arcface-spring-boot-starter</artifactId>
+    <packaging>pom</packaging>
+    <name>arcface-spring-boot-starter</name>
+    <url>http://www.example.com</url>
 
-  <dependencies>
+    <dependencies>
 
-    <dependency>
-      <groupId>com.chuangdun</groupId>
-      <artifactId>arcface-spring-boot-autoconfigure</artifactId>
-      <version>${arcface-spring-boot-autoconfigure.version}</version>
-    </dependency>
+        <dependency>
+            <groupId>com.chuangdun</groupId>
+            <artifactId>arcface-spring-boot-autoconfigure</artifactId>
+            <version>${arcface-spring-boot-autoconfigure.version}</version>
+        </dependency>
 
-    <dependency>
-      <groupId>com.chuangdun</groupId>
-      <artifactId>arcface-engine</artifactId>
-      <version>${arcface-engine.version}</version>
-      <type>pom</type>
-    </dependency>
-  </dependencies>
+        <dependency>
+            <groupId>com.chuangdun</groupId>
+            <artifactId>arcface-engine</artifactId>
+            <version>${arcface-engine.version}</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
 </project>

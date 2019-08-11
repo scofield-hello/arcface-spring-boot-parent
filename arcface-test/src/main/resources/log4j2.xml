@@ -12,7 +12,7 @@
         <root level="DEBUG">
             <appender-ref ref="Console"/>
         </root>
-        <Logger name="org.crsh.plugin" level="warn" />
+        <Logger name="org.crsh.plugin" level="warn"/>
         <logger name="org.crsh.ssh" level="warn"/>
         <logger name="org.springframework.boot.actuate.autoconfigure.CrshAutoConfiguration" level="warn"/>
     </loggers>
