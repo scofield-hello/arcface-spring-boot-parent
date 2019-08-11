@@ -7,6 +7,7 @@ import com.arcsoft.face.enums.DetectMode;
 import com.arcsoft.face.enums.DetectOrient;
 import com.arcsoft.face.enums.ErrorInfo;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
 public class ArcfaceAutoConfiguration {
 
     @Bean
+    @ConditionalOnMissingBean
     public FunctionConfiguration functionConfiguration(ArcEngineProperties properties) {
         //功能配置
         FunctionConfiguration functionConfiguration = new FunctionConfiguration();
@@ -34,6 +36,7 @@ public class ArcfaceAutoConfiguration {
     }
 
     @Bean
+    @ConditionalOnMissingBean
     public EngineConfiguration engineConfiguration(FunctionConfiguration functionConfiguration) {
         //引擎配置
         EngineConfiguration engineConfiguration = new EngineConfiguration();
@@ -44,6 +47,7 @@ public class ArcfaceAutoConfiguration {
     }
 
     @Bean
+    @ConditionalOnMissingBean
     public FaceEngine faceEngine(ArcEngineProperties properties) {
         if (properties.getLocation() == null) {
             throw new NullPointerException("请您先配置face.sdk.location项");
