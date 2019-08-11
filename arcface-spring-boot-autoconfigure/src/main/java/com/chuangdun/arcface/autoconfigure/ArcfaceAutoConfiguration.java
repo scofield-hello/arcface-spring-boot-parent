@@ -8,6 +8,7 @@ import com.arcsoft.face.enums.DetectOrient;
 import com.arcsoft.face.enums.ErrorInfo;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ConditionalOnClass(FaceEngine.class)
+@ConditionalOnProperty(prefix = "face.sdk", name = "enabled", havingValue = "true", matchIfMissing = true)
 @EnableConfigurationProperties(ArcEngineProperties.class)
 public class ArcfaceAutoConfiguration {
 
@@ -31,7 +33,7 @@ public class ArcfaceAutoConfiguration {
         functionConfiguration.setSupportFaceRecognition(properties.isFaceRecognitionEnabled());
         functionConfiguration.setSupportGender(properties.isGenderDetectEnabled());
         functionConfiguration.setSupportLiveness(properties.isLivenessEnabled());
-        functionConfiguration.setSupportIRLiveness(properties.isIRLivenessEnabled());
+        functionConfiguration.setSupportIRLiveness(properties.isIrLivenessEnabled());
         return functionConfiguration;
     }
 
@@ -67,4 +69,5 @@ public class ArcfaceAutoConfiguration {
         }
         return faceEngine;
     }
+
 }

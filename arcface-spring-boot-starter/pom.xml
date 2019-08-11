@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>arcface-spring-boot-starter</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>arcface-spring-boot-starter</name>
     <url>http://www.example.com</url>
 
@@ -20,6 +20,7 @@
             <groupId>com.chuangdun</groupId>
             <artifactId>arcface-spring-boot-autoconfigure</artifactId>
             <version>${arcface-spring-boot-autoconfigure.version}</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -27,6 +28,7 @@
             <artifactId>arcface-engine</artifactId>
             <version>${arcface-engine.version}</version>
             <type>pom</type>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

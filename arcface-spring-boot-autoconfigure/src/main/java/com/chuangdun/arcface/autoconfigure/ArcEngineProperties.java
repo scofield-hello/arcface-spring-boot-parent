@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "face.sdk", ignoreUnknownFields = false)
 public class ArcEngineProperties {
+    private boolean enabled;
 
     private String location;
     private String appId;
@@ -18,16 +19,25 @@ public class ArcEngineProperties {
     private boolean genderDetectEnabled;
     private boolean face3dAngleEnabled;
     private boolean livenessEnabled;
-    private boolean IRLivenessEnabled;
+    private boolean irLivenessEnabled;
 
     public ArcEngineProperties() {
-        this.faceDetectEnabled = false;
-        this.faceRecognitionEnabled = false;
+        this.enabled = true;
+        this.faceDetectEnabled = true;
+        this.faceRecognitionEnabled = true;
         this.ageDetectEnabled = false;
         this.genderDetectEnabled = false;
         this.face3dAngleEnabled = false;
         this.livenessEnabled = false;
-        this.IRLivenessEnabled = false;
+        this.irLivenessEnabled = false;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getLocation() {
@@ -102,18 +112,19 @@ public class ArcEngineProperties {
         this.livenessEnabled = livenessEnabled;
     }
 
-    public boolean isIRLivenessEnabled() {
-        return IRLivenessEnabled;
+    public boolean isIrLivenessEnabled() {
+        return irLivenessEnabled;
     }
 
-    public void setIRLivenessEnabled(boolean IRLivenessEnabled) {
-        this.IRLivenessEnabled = IRLivenessEnabled;
+    public void setIrLivenessEnabled(boolean irLivenessEnabled) {
+        this.irLivenessEnabled = irLivenessEnabled;
     }
 
     @Override
     public String toString() {
         return "ArcEngineProperties{" +
-                "location='" + location + '\'' +
+                "enabled=" + enabled +
+                ", location='" + location + '\'' +
                 ", appId='" + appId + '\'' +
                 ", sdkKey='" + sdkKey + '\'' +
                 ", faceDetectEnabled=" + faceDetectEnabled +
@@ -122,7 +133,7 @@ public class ArcEngineProperties {
                 ", genderDetectEnabled=" + genderDetectEnabled +
                 ", face3dAngleEnabled=" + face3dAngleEnabled +
                 ", livenessEnabled=" + livenessEnabled +
-                ", IRLivenessEnabled=" + IRLivenessEnabled +
+                ", irLivenessEnabled=" + irLivenessEnabled +
                 '}';
     }
 }
