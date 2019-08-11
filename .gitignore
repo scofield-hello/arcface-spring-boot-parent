@@ -1,0 +1,5 @@
+# Project exclude paths
+/arcface-engine/target/
+/arcface-spring-boot-autoconfigure/target/
+/arcface-spring-boot-starter/target/
+/arcface-test/target/
