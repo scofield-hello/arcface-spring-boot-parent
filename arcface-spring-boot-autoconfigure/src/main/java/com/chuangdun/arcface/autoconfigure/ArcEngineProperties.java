@@ -110,4 +110,19 @@ public class ArcEngineProperties {
         this.IRLivenessEnabled = IRLivenessEnabled;
     }
 
+    @Override
+    public String toString() {
+        return "ArcEngineProperties{" +
+                "location='" + location + '\'' +
+                ", appId='" + appId + '\'' +
+                ", sdkKey='" + sdkKey + '\'' +
+                ", faceDetectEnabled=" + faceDetectEnabled +
+                ", faceRecognitionEnabled=" + faceRecognitionEnabled +
+                ", ageDetectEnabled=" + ageDetectEnabled +
+                ", genderDetectEnabled=" + genderDetectEnabled +
+                ", face3dAngleEnabled=" + face3dAngleEnabled +
+                ", livenessEnabled=" + livenessEnabled +
+                ", IRLivenessEnabled=" + IRLivenessEnabled +
+                '}';
+    }
 }
