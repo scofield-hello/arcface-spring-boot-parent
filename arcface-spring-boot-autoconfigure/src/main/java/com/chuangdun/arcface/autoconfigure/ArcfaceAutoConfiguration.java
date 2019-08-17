@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -19,6 +20,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnClass(FaceEngine.class)
 @ConditionalOnProperty(prefix = "face.sdk", name = "enabled", havingValue = "true", matchIfMissing = true)
+@Conditional({SupportiveCondition.class})
 @EnableConfigurationProperties(ArcEngineProperties.class)
 public class ArcfaceAutoConfiguration {
 

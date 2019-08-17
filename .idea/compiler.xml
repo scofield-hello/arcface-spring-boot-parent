@@ -7,9 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="arcface-spring-boot-autoconfigure" />
+        <module name="arcface-spring-boot-starter" />
         <module name="arcface-test" />
+        <module name="arcface-spring-boot-autoconfigure" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="faceidtest" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
