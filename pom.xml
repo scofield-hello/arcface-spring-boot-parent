@@ -24,11 +24,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
         <arcsoft-sdk-face.version>2.2.0.1</arcsoft-sdk-face.version>
-        <arcface-engine.version>1.0-SNAPSHOT</arcface-engine.version>
-        <arcface-spring-boot-autoconfigure.version>1.0-SNAPSHOT</arcface-spring-boot-autoconfigure.version>
-        <arcface-spring-boot-starter.version>1.0-SNAPSHOT</arcface-spring-boot-starter.version>
-        <arcface-test>1.0-SNAPSHOT</arcface-test>
-
     </properties>
 
     <dependencyManagement>
@@ -40,6 +35,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>com.arcsoft.face</groupId>
                 <artifactId>arcsoft-sdk-face</artifactId>
