@@ -18,7 +18,7 @@ public class NonSupportedCondition implements Condition {
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         String osName = context.getEnvironment().getProperty(ENV_PROPERTY_OS_NAME);
         for (String nonSupportOsName : NON_SUPPORTED_OS) {
-            if (nonSupportOsName.equals(osName)) {
+            if (osName.toUpperCase().startsWith(nonSupportOsName.toUpperCase())) {
                 return true;
             }
         }

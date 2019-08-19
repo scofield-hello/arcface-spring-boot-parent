@@ -19,7 +19,7 @@ public class SupportiveCondition implements Condition {
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         String osName = context.getEnvironment().getProperty(ENV_PROPERTY_OS_NAME);
         for (String supportOsName : SUPPORTED_OS) {
-            if (supportOsName.equals(osName)) {
+            if (osName.toUpperCase().startsWith(supportOsName.toUpperCase())) {
                 return true;
             }
         }

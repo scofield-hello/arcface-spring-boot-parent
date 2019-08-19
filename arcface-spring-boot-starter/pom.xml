@@ -22,6 +22,7 @@
         <dependency>
             <groupId>com.chuangdun</groupId>
             <artifactId>arcface-engine</artifactId>
+            <type>pom</type>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
