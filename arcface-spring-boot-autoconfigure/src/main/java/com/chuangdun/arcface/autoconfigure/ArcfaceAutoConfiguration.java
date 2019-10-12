@@ -5,7 +5,6 @@ import com.arcsoft.face.FaceEngine;
 import com.arcsoft.face.FunctionConfiguration;
 import com.arcsoft.face.enums.DetectMode;
 import com.arcsoft.face.enums.DetectOrient;
-import com.arcsoft.face.enums.ErrorInfo;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -52,7 +51,7 @@ public class ArcfaceAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public FaceEngine faceEngine(ArcEngineProperties properties) {
+    public FaceEngineFactory faceEngineFactory(ArcEngineProperties properties, EngineConfiguration configuration) {
         if (properties.getLocation() == null) {
             throw new NullPointerException("请您先配置face.sdk.location项");
         }
@@ -62,14 +61,6 @@ public class ArcfaceAutoConfiguration {
         if (properties.getSdkKey() == null) {
             throw new NullPointerException("请您先配置face.sdk.sdk-key项");
         }
-        FaceEngine faceEngine = new FaceEngine(properties.getLocation());
-        int activeCode = faceEngine.activeOnline(properties.getAppId(),
-                properties.getSdkKey());
-        if (activeCode != ErrorInfo.MOK.getValue()
-                && activeCode != ErrorInfo.MERR_ASF_ALREADY_ACTIVATED.getValue()) {
-            throw new IllegalStateException("虹软人脸引擎激活失败,请检查配置:" + activeCode);
-        }
-        return faceEngine;
+        return new FaceEngineFactory(properties.getLocation(), properties.getAppId(), properties.getSdkKey(), configuration);
     }
-
 }
