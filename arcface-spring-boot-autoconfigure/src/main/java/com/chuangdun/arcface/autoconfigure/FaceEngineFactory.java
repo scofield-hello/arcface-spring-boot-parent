@@ -28,6 +28,7 @@ public class FaceEngineFactory extends BasePooledObjectFactory<FaceEngine> {
     public FaceEngine create() throws Exception {
         FaceEngine faceEngine = new FaceEngine(sdkLibPath);
         int activeCode = faceEngine.activeOnline(appId, sdkKey);
+        System.out.println("人脸识别引擎实例激活:" + activeCode);
         if (activeCode != ErrorInfo.MOK.getValue()
                 && activeCode != ErrorInfo.MERR_ASF_ALREADY_ACTIVATED.getValue()) {
             throw new IllegalStateException("虹软人脸引擎激活失败,请检查配置:" + activeCode);
@@ -38,6 +39,7 @@ public class FaceEngineFactory extends BasePooledObjectFactory<FaceEngine> {
             if (initCode == ErrorInfo.MOK.getValue()) {
                 break;
             }
+            System.out.println("人脸识别引擎实例初始化:" + initCode);
         }
         if (initCode != ErrorInfo.MOK.getValue()) {
             throw new ArcFaceSdkException("人脸比对引擎初始化失败:" + initCode);
@@ -54,8 +56,7 @@ public class FaceEngineFactory extends BasePooledObjectFactory<FaceEngine> {
     @Override
     public void destroyObject(PooledObject<FaceEngine> p) throws Exception {
         FaceEngine faceEngine = p.getObject();
-        int unInitCode = faceEngine.unInit();
-        System.out.println("faceEngineUnInitCode:" + unInitCode);
+        faceEngine.unInit();
         super.destroyObject(p);
     }
 }
