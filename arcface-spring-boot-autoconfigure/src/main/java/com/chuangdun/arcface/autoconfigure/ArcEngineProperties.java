@@ -3,16 +3,15 @@ package com.chuangdun.arcface.autoconfigure;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author nick
+ * @author Nick
  */
 @ConfigurationProperties(prefix = "face.sdk", ignoreUnknownFields = false)
 public class ArcEngineProperties {
     private boolean enabled;
 
-    private String location;
     private String appId;
     private String sdkKey;
-
+    private String location;
     private boolean faceDetectEnabled;
     private boolean faceRecognitionEnabled;
     private boolean ageDetectEnabled;

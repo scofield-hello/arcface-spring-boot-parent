@@ -1,17 +1,20 @@
 package com.chuangdun;
 
 import lombok.extern.log4j.Log4j2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @author nick
+ * @author Nick
  */
 @Log4j2
 @SpringBootApplication
 public class ArcFaceApplication implements ApplicationRunner {
+    private Logger logger = LoggerFactory.getLogger(ArcFaceApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(ArcFaceApplication.class, args);
@@ -20,6 +23,6 @@ public class ArcFaceApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        log.debug("启动ArcFaceEngine");
+        logger.debug("启动ArcFaceEngine");
     }
 }

@@ -23,11 +23,13 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.chuangdun</groupId>
-            <artifactId>arcface-engine</artifactId>
-            <type>pom</type>
-            <version>${project.parent.version}</version>
-            <scope>provided</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.arcsoft.face</groupId>
+            <artifactId>arcsoft-sdk-face</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

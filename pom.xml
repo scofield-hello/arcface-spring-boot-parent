@@ -12,7 +12,6 @@
     <url>http://www.example.com</url>
 
     <modules>
-        <module>arcface-engine</module>
         <module>arcface-spring-boot-autoconfigure</module>
         <module>arcface-spring-boot-starter</module>
         <module>arcface-test</module>
@@ -23,7 +22,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
-        <arcsoft-sdk-face.version>2.2.0.1</arcsoft-sdk-face.version>
+        <arcsoft-sdk-face.version>3.0.0.0</arcsoft-sdk-face.version>
     </properties>
 
     <dependencyManagement>
@@ -49,6 +48,11 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-log4j2</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
         </dependencies>

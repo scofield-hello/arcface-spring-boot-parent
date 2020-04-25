@@ -5,6 +5,8 @@ import com.arcsoft.face.FaceEngine;
 import com.arcsoft.face.FunctionConfiguration;
 import com.arcsoft.face.enums.DetectMode;
 import com.arcsoft.face.enums.DetectOrient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -22,6 +24,7 @@ import org.springframework.context.annotation.Configuration;
 @Conditional({SupportiveCondition.class})
 @EnableConfigurationProperties(ArcEngineProperties.class)
 public class ArcfaceAutoConfiguration {
+    private static final Logger logger = LoggerFactory.getLogger(ArcfaceAutoConfiguration.class);
 
     @Bean
     @ConditionalOnMissingBean
@@ -35,17 +38,18 @@ public class ArcfaceAutoConfiguration {
         functionConfiguration.setSupportGender(properties.isGenderDetectEnabled());
         functionConfiguration.setSupportLiveness(properties.isLivenessEnabled());
         functionConfiguration.setSupportIRLiveness(properties.isIrLivenessEnabled());
+        logger.debug("虹软人脸识别功能配置类实例化成功.");
         return functionConfiguration;
     }
 
     @Bean
     @ConditionalOnMissingBean
     public EngineConfiguration engineConfiguration(FunctionConfiguration functionConfiguration) {
-        //引擎配置
         EngineConfiguration engineConfiguration = new EngineConfiguration();
         engineConfiguration.setDetectMode(DetectMode.ASF_DETECT_MODE_IMAGE);
         engineConfiguration.setDetectFaceOrientPriority(DetectOrient.ASF_OP_0_ONLY);
         engineConfiguration.setFunctionConfiguration(functionConfiguration);
+        logger.debug("虹软人脸识别引擎配置类实例化成功.");
         return engineConfiguration;
     }
 
