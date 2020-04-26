@@ -5,6 +5,7 @@ import com.arcsoft.face.FaceEngine;
 import com.arcsoft.face.FunctionConfiguration;
 import com.arcsoft.face.enums.DetectMode;
 import com.arcsoft.face.enums.DetectOrient;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -21,8 +22,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnClass(FaceEngine.class)
 @ConditionalOnProperty(prefix = "face.sdk", name = "enabled", havingValue = "true", matchIfMissing = true)
-@Conditional({SupportiveCondition.class})
-@EnableConfigurationProperties(ArcEngineProperties.class)
+@Conditional({ArcFaceSupported.class})
+@EnableConfigurationProperties(value = {ArcEngineProperties.class, ArcEnginePoolProperties.class})
+
 public class ArcfaceAutoConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(ArcfaceAutoConfiguration.class);
 
@@ -66,5 +68,37 @@ public class ArcfaceAutoConfiguration {
             throw new NullPointerException("请您先配置face.sdk.sdk-key项");
         }
         return new FaceEngineFactory(properties.getLocation(), properties.getAppId(), properties.getSdkKey(), configuration);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public FaceEnginePool faceEnginePool(FaceEngineFactory faceEngineFactory, ArcEnginePoolProperties poolProperties){
+        GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+        config.setMaxIdle(poolProperties.getMaxIdle());
+        config.setMaxTotal(poolProperties.getMaxTotal());
+        config.setMinIdle(poolProperties.getMinIdle());
+        config.setBlockWhenExhausted(poolProperties.isBlockWhenExhausted());
+
+        config.setFairness(poolProperties.isFairness());
+        config.setJmxEnabled(poolProperties.isJmxEnabled());
+        config.setJmxNameBase(poolProperties.getJmxNameBase());
+        config.setJmxNamePrefix(poolProperties.getJmxNamePrefix());
+        config.setMaxWaitMillis(poolProperties.getMaxWaitMillis());
+
+        config.setNumTestsPerEvictionRun(poolProperties.getNumTestsPerEvictionRun());
+        config.setEvictorShutdownTimeoutMillis(poolProperties.getEvictorShutdownTimeoutMillis());
+        config.setMinEvictableIdleTimeMillis(poolProperties.getMinEvictableIdleTimeMillis());
+        config.setSoftMinEvictableIdleTimeMillis(poolProperties.getSoftMinEvictableIdleTimeMillis());
+        config.setTimeBetweenEvictionRunsMillis(poolProperties.getTimeBetweenEvictionRunsMillis());
+
+        config.setLifo(poolProperties.isLifo());
+        config.setTestOnBorrow(poolProperties.isTestOnBorrow());
+        config.setTestOnCreate(poolProperties.isTestOnCreate());
+        config.setTestOnReturn(poolProperties.isTestOnReturn());
+        config.setTestWhileIdle(poolProperties.isTestWhileIdle());
+
+        FaceEnginePool faceEnginePool = new FaceEnginePool(faceEngineFactory, config);
+        logger.debug("虹软人脸识别引擎对象池实例化成功.");
+        return faceEnginePool;
     }
 }

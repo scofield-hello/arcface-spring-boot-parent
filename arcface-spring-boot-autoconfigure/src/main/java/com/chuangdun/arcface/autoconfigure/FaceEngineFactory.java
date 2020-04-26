@@ -25,7 +25,7 @@ public class FaceEngineFactory extends BasePooledObjectFactory<FaceEngine> {
         this.appId = appId;
         this.sdkKey = sdkKey;
         this.engineConfiguration = engineConfiguration;
-        logger.debug("虹软人脸识别引擎对象工厂实例化成功");
+        logger.info("虹软人脸识别引擎对象工厂实例化成功");
     }
 
     @Override
@@ -37,17 +37,19 @@ public class FaceEngineFactory extends BasePooledObjectFactory<FaceEngine> {
                 && activeCode != ErrorInfo.MERR_ASF_ALREADY_ACTIVATED.getValue()) {
             throw new ArcFaceActiveException("虹软人脸识别SDK引擎激活失败,请检查配置:" + activeCode);
         }
+        logger.info("虹软人脸识别SDK引擎激活成功");
         int initCode = ErrorInfo.MERR_UNKNOWN.getValue();
         for (int retry = 0; retry < 3; retry++) {
             initCode = faceEngine.init(engineConfiguration);
             if (initCode == ErrorInfo.MOK.getValue()) {
                 break;
             }
-            logger.info("虹软人脸识别SDK引擎初始化结果码:{}", initCode);
+            logger.warn("虹软人脸识别SDK引擎初始化结果码:{}", initCode);
         }
         if (initCode != ErrorInfo.MOK.getValue()) {
             throw new ArcFaceInitException("虹软人脸识别SDK引擎初始化失败:" + initCode);
         }
+        logger.info("虹软人脸识别SDK引擎初始化成功");
         return faceEngine;
     }
 
@@ -63,6 +65,8 @@ public class FaceEngineFactory extends BasePooledObjectFactory<FaceEngine> {
         logger.debug("虹软人脸识别SDK引擎实例销毁结果码:{}", resultCode);
         if (resultCode != ErrorInfo.MOK.getValue()){
             logger.warn("虹软人脸识别SDK引擎实例销毁失败:{}", resultCode);
+        }else{
+            logger.info("虹软人脸识别SDK引擎实例已销毁");
         }
         super.destroyObject(p);
     }

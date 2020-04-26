@@ -20,7 +20,8 @@ public class ArcFaceApplication implements ApplicationRunner {
 
 
     @Override
-    public void run(ApplicationArguments args) {
-        logger.debug("启动ArcFaceEngine");
+    public void run(ApplicationArguments args){
+
     }
+
 }

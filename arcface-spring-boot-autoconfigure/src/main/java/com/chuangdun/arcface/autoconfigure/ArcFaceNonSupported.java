@@ -9,10 +9,10 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 /**
  * @author Nick
  */
-public class NonSupportedCondition implements Condition {
-    private static final Logger logger = LoggerFactory.getLogger(NonSupportedCondition.class);
+public class ArcFaceNonSupported implements Condition {
+    private static final Logger logger = LoggerFactory.getLogger(ArcFaceNonSupported.class);
     private static final String ENV_PROPERTY_OS_NAME = "os.name";
-    private static final String MAC_OS_NAME = "Mac OS X";
+    private static final String MAC_OS_NAME = "Mac";
 
     private static final String[] NON_SUPPORTED_OS = {MAC_OS_NAME};
 

@@ -9,11 +9,11 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 /**
  * @author Nick
  */
-public class SupportiveCondition implements Condition {
-    private static final Logger logger = LoggerFactory.getLogger(SupportiveCondition.class);
+public class ArcFaceSupported implements Condition {
+    private static final Logger logger = LoggerFactory.getLogger(ArcFaceSupported.class);
 
     private static final String ENV_PROPERTY_OS_NAME = "os.name";
-    private static final String WINDOWS_OS_NAME = "Windows";
+    private static final String WINDOWS_OS_NAME = "Win";
     private static final String LINUX_OS_NAME = "Linux";
 
     private static final String[] SUPPORTED_OS = {WINDOWS_OS_NAME, LINUX_OS_NAME};

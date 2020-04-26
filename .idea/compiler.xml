@@ -13,6 +13,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="arcface-engine" target="1.8" />
       <module name="faceidtest" target="1.8" />
     </bytecodeTargetLevel>
   </component>
